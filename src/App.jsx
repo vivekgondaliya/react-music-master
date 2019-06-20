@@ -10,13 +10,15 @@ class App extends Component {
         super(props);
         this.state = {
             query: '',
-            artist: null
+            artist: null,
+            tracks: null
         }
     }
 
     search(){
         const BASE_URL = 'https://api.spotify.com/v1/search?';
         const FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
+        const ALBUM_URL ='https://api.spotify.com/v1/artists/';
         
         let myHeaders = new Headers();
         myHeaders.append('Authorization', 'Bearer BQCS9RvcdtAHvK1j8oudGGdiSoNgGr5VgLtj5-7YDIceXTQayR9AcmkdZBF40C96cmUrDDm-IqMztCj2jhNQ_m14bAS3t4cxv9syQWxDadZ-HeYs0mfJpsl8I9krUxDg5jLBX5rOxPOhQg');
@@ -33,7 +35,16 @@ class App extends Component {
         .then(json => {
             const artist = json.artists.items[0];
             this.setState({artist});
-            console.log(this.state);
+
+            let TOP_TRACKS_URL = `${ALBUM_URL}${artist.id}/top-tracks?country=US&`;
+            let mySecondRequest = new Request(TOP_TRACKS_URL, myInit);
+            fetch(mySecondRequest)
+            .then(response => response.json())
+            .then(json => {
+                const { tracks } = json;
+                this.setState({tracks});
+
+            });
         });
     }
 
