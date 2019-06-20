@@ -1,14 +1,25 @@
 import React, {Component} from 'react';
+import {FormGroup, FormControl, InputGroup, Button} from 'react-bootstrap';
+
+import './App.css';
+
 
 class App extends Component {
     render(){
         return (
-            <div>
+            <div className="app">
                 <div className="app-title">Music Master</div>
-                <div>
-                    <input type="text" placeholder="search an artist..."/>
-                    <button>button</button>
-                </div>
+                <FormGroup>
+                    <InputGroup>
+                        <FormControl 
+                            type="text"
+                            placeholder="search for an artist"
+                        />
+                        <InputGroup.Append>
+                            <Button variant="success">Search</Button>
+                        </InputGroup.Append>
+                    </InputGroup>
+                </FormGroup>
                 <div className="profile">
                     <div>Artist Picture</div>
                     <div>Artist Name</div>
