@@ -13,7 +13,22 @@ class App extends Component {
     }
 
     search(){
-        console.log(this.state);
+        const BASE_URL = 'https://api.spotify.com/v1/search?';
+        const FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
+        
+        let myHeaders = new Headers();
+        myHeaders.append('Authorization', 'Bearer BQCS9RvcdtAHvK1j8oudGGdiSoNgGr5VgLtj5-7YDIceXTQayR9AcmkdZBF40C96cmUrDDm-IqMztCj2jhNQ_m14bAS3t4cxv9syQWxDadZ-HeYs0mfJpsl8I9krUxDg5jLBX5rOxPOhQg');
+        
+        let myInit = {
+            method: 'GET',
+            headers: myHeaders
+        };
+
+        let myRequest = new Request(FETCH_URL, myInit);
+
+        fetch(myRequest)
+        .then(response => response.json())
+        .then(json => console.log(json));
     }
 
     render(){
