@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {FormGroup, FormControl, InputGroup, Button} from 'react-bootstrap';
 
+import Profile from './Profile.jsx';
 import './App.css';
 
 
@@ -8,7 +9,8 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            query: ''
+            query: '',
+            artist: null
         }
     }
 
@@ -28,7 +30,11 @@ class App extends Component {
 
         fetch(myRequest)
         .then(response => response.json())
-        .then(json => console.log(json));
+        .then(json => {
+            const artist = json.artists.items[0];
+            this.setState({artist});
+            console.log(this.state);
+        });
     }
 
     render(){
@@ -53,13 +59,20 @@ class App extends Component {
                         </InputGroup.Append>
                     </InputGroup>
                 </FormGroup>
-                <div className="profile">
-                    <div>Artist Picture</div>
-                    <div>Artist Name</div>
-                </div>
-                <div className="gallery">
-                    Gallery
-                </div>
+                {
+                    this.state.artist !== null 
+                        ?
+                            <div>
+                                <Profile 
+                                    artist={this.state.artist}
+                                />
+                                <div className="gallery">
+                                    Gallery
+                                </div>
+                            </div>
+                        :
+                            <div></div>
+                }
             </div>
         );
     }
