@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {FormGroup, FormControl, InputGroup, Button} from 'react-bootstrap';
 
 import Profile from './Profile.jsx';
+import Gallery from './Gallery.jsx';
 import './App.css';
 
 
@@ -21,7 +22,7 @@ class App extends Component {
         const ALBUM_URL ='https://api.spotify.com/v1/artists/';
         
         let myHeaders = new Headers();
-        myHeaders.append('Authorization', 'Bearer BQCS9RvcdtAHvK1j8oudGGdiSoNgGr5VgLtj5-7YDIceXTQayR9AcmkdZBF40C96cmUrDDm-IqMztCj2jhNQ_m14bAS3t4cxv9syQWxDadZ-HeYs0mfJpsl8I9krUxDg5jLBX5rOxPOhQg');
+        myHeaders.append('Authorization', 'Bearer BQAz8mH-YJGLF6fQO5msIpFv00mlIsoAaeJg0jXLg5L_N0t1TVmwzrB4nXWF-N-zomATzSE2YxC9DtD2P_sQ99SqyH20oMyacRIAZ_ERhLe71DHn4yRLhzSN8Ld8BwduKh8_TZYVYPpsoA');
         
         let myInit = {
             method: 'GET',
@@ -77,9 +78,7 @@ class App extends Component {
                                 <Profile 
                                     artist={this.state.artist}
                                 />
-                                <div className="gallery">
-                                    Gallery
-                                </div>
+                                <Gallery className="gallery" tracks={this.state.tracks}/>
                             </div>
                         :
                             <div></div>
