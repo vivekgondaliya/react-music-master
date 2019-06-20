@@ -5,6 +5,17 @@ import './App.css';
 
 
 class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            query: ''
+        }
+    }
+
+    search(){
+        console.log(this.state);
+    }
+
     render(){
         return (
             <div className="app">
@@ -14,8 +25,15 @@ class App extends Component {
                         <FormControl 
                             type="text"
                             placeholder="search for an artist"
+                            value={this.state.query}
+                            onChange={event => { this.setState({query: event.target.value}); }}
+                            onKeyPress={event => {
+                                if(event.key === 'Enter'){
+                                    this.search();
+                                }
+                            }}
                         />
-                        <InputGroup.Append>
+                        <InputGroup.Append onClick={() => this.search()}>
                             <Button variant="success">Search</Button>
                         </InputGroup.Append>
                     </InputGroup>
