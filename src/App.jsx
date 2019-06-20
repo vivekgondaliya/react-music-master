@@ -31,6 +31,10 @@ class App extends Component {
 
         let myRequest = new Request(FETCH_URL, myInit);
 
+        this.setState({
+            artist: null,
+            tracks: null
+        });
         fetch(myRequest)
         .then(response => response.json())
         .then(json => {
