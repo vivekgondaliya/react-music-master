@@ -22,7 +22,7 @@ class App extends Component {
         const ALBUM_URL ='https://api.spotify.com/v1/artists/';
         
         let myHeaders = new Headers();
-        myHeaders.append('Authorization', 'Bearer BQAz8mH-YJGLF6fQO5msIpFv00mlIsoAaeJg0jXLg5L_N0t1TVmwzrB4nXWF-N-zomATzSE2YxC9DtD2P_sQ99SqyH20oMyacRIAZ_ERhLe71DHn4yRLhzSN8Ld8BwduKh8_TZYVYPpsoA');
+        myHeaders.append('Authorization', 'Bearer BQArorOQIeN_E9g_jAXeo1Svsv5ipAFss6XGdIy3iRaWlw8iZAsiP5UAW74JcXCj_HyIojKl3Fdszx0TZLTz_q38AhsgdEndJxlfeiib1UtkH2xelPA3zuShR0aUMOF7nDoP1OvQitJk9w');
         
         let myInit = {
             method: 'GET',
